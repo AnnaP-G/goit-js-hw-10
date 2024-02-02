@@ -2,7 +2,7 @@ import flatpickr from 'flatpickr';
 import iziToast from 'izitoast';
 import 'flatpickr/dist/flatpickr.min.css';
 import 'izitoast/dist/css/iziToast.min.css';
-// import { alertOptions } from './alertOptions.js';
+import { alertOptions } from './alertOptions.js';
 
 const dateTimeSelector = document.querySelector('input#datetime-picker');
 const startTimerButton = document.querySelector('button[data-start]');
@@ -16,7 +16,7 @@ let userSelectedDate, timerId;
 const countLeftTime = date => {
     const dateNow = Math.floor(Date.now() / 1000);
     const selectedDate = date.getTime() / 1000;
-        return (selectedDate - dateNow) * 1000;
+    return (selectedDate - dateNow) * 1000;
 };
 
 const convertMs = ms => {
@@ -30,7 +30,7 @@ const convertMs = ms => {
     const minutes = Math.floor(((ms % day) % hour) / minute);
     const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
-        return { days, hours, minutes, seconds };
+    return { days, hours, minutes, seconds };
 };
 
 const setDate = ({ days, hours, minutes, seconds }) => {
@@ -78,33 +78,6 @@ const options = {
         startTimerButton.disabled = true;
         iziToast.show(alertOptions.error);
         }
-    },
-};
-
-export const alertOptions = {
-    error: {
-        title: 'Error',
-        message: 'Please choose a date in the future',
-        color: '#EF4040',
-        position: 'topRight',
-        icon: 'icon-octagon',
-        iconText: '',
-        timeout: 5000,
-        titleColor: '#fff',
-        messageColor: '#fff',
-        iconColor: '#fff',
-    },
-    success: {
-        title: 'OK',
-        message: 'Fulfilled promise in 4000ms',
-        color: '#59A10D',
-        position: 'topRight',
-        icon: 'icon-check-circle',
-        iconText: '',
-        timeout: 5000,
-        titleColor: '#fff',
-        messageColor: '#fff',
-        iconColor: '#fff',
     },
 };
 

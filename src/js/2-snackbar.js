@@ -1,6 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
-// import { alertOptions } from './alertOptions.js';
+import { alertOptions } from './alertOptions.js';
 
 const form = document.querySelector('.form');
 const radioButtons = document.querySelectorAll('input[name="state"]');
@@ -33,8 +33,8 @@ const onSubmit = event => {
     const delay = Number(event.target.elements.delay.value);
     const isFulfilled = event.target.elements.state.value === FULFILLED;
 
-    const promise = new Promise((resolve, reject) => {
-        setTimeout(() => {
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
         if (isFulfilled) {
             resolve(`Fulfilled promise in ${delay}ms`);
         } else {
@@ -43,13 +43,13 @@ const onSubmit = event => {
         }, delay);
     });
 
-    promise
-        .then(value => {
-        iziToast.show({ ...alertOptions.success, message: value });
+promise
+    .then(value => {
+            iziToast.show({ ...alertOptions.success, message: value });
         })
         .catch(error => {
-        iziToast.show({ ...alertOptions.error, message: error });
-        });
+            iziToast.show({ ...alertOptions.error, message: error });
+    });
 };
 
 form.addEventListener('submit', onSubmit);
